@@ -1,0 +1,46 @@
+<div *ngIf="productList.length > 0">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Product List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table>
+          <tr>
+            <td>Product Name</td>
+            <td>Quantity</td>
+            <td>Total Price</td>
+          </tr>
+          <tr *ngFor="let item of productList; let i = index">
+            <td style="width: 10em;">{{item.name}}</td>
+            <td style="width: 15em;">
+              <div class="row">
+                <div class="alignment">
+                  <button (click)="decrement(item)" class="btn btn-default">-</button>
+                  <input class="qty" value="{{item.Quantity}}" type="number" name="Quantity" readonly/>
+                  <button class="btn btn-default" (click)="increment(item)">+</button>
+                </div>
+              </div>
+            </td>
+            <td style="width: 5em;"><p style="margin: 0px;" class="pricing">{{item.totalPrice |currency:'INR'}}</p></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Grand Total :</td>
+            <td>{{grandTotal |currency: 'INR'}}</td>
+          </tr>
+      </table>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+<div *ngIf="productList.length <= 0">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>No Products Added in Cart</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <a class="nav" routerLink="/products">Continue Shopping</a>
+    </mat-card-content>
+  </mat-card>
+</div>
+

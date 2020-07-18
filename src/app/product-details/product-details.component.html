@@ -1,0 +1,24 @@
+<div *ngIf="productDetail != null">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{productDetail.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="productDetail.image" [title]="productDetail.name">
+    <mat-card-content>
+      <p>
+        {{productDetail.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="row">
+        <div class="alignment">
+          <button (click)="decrement(productDetail)" class="btn btn-default">-</button>
+          <input class="qty" value="{{productDetail.Quantity}}" type="number" name="Quantity" readonly/>
+          <button class="btn btn-default" (click)="increment(productDetail)">+</button>
+        </div>
+        <p class="pricing">{{productDetail.price |currency:'INR'}}</p>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
